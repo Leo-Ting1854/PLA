@@ -52,7 +52,7 @@ class PLA:
         for sort in kind:  #ex kind=[0,1,2]  then need 3 perceptron
             y_binary=np.copy(y)
             self.W_vector.append([])
-            W_vector=np.zeros((1,X_vector.shape[1]))
+            W_vector=np.random.rand(X_vector.shape[1])
             for index in range(len(y_binary)):
                 if(y_binary[index]==sort):#正在分的這一類
                     y_binary[index]=1
@@ -186,14 +186,18 @@ def main():
 
     iris= datasets.load_iris()
     from sklearn.preprocessing import  scale
-    # X=iris.data[0:100,[0,1]]
-    # X=scale(X)
-    # y=iris.target[0:100]
-    # X,y=datasets.make_blobs(200,n_features=3)
-    digit=datasets.load_digits()
-    X=digit.data
 
-    y=digit.target
+    ##Iris
+    # X=iris.data[0:150,[0,1,2,3]]
+    # X=scale(X)
+    # y=iris.target[0:150]
+    ##blobs
+    X,y=datasets.make_blobs(200,n_features=3)
+    ##digit
+    # digit=datasets.load_digits()
+    # X=digit.data
+    #
+    # y=digit.target
 
     from sklearn.model_selection import train_test_split
     x_train,x_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=0)
